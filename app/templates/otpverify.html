@@ -1,0 +1,61 @@
+{% extends "base1.html" %}
+{% block content %}
+
+{% load static %}
+
+<!-- HOME -->
+<section class="section-hero overlay inner-page bg-image" style="background-image: url({% static 'images/hero_1.jpg' %});"
+  id="home-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1 class="text-white font-weight-bold">Login</h1>
+        <div class="custom-breadcrumbs">
+          <a href="#">Home</a> <span class="mx-2 slash">/</span>
+          <span class="text-white"><strong>OTP Verification</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="site-section">
+  <div class="container">
+    <div class="row justify-content-center"> <!-- Center the content -->
+      <div class="col-lg-6">
+        <h2 class="mb-4 text-center">OTP Verification</h2>
+        <form action="{% url 'otp' %}" class="p-4 border rounded" method="post">
+            {% csrf_token%}
+            <div class="text-center">
+                <center>
+                    {% if msg %}
+                    <h4 style="color:red"> {{msg}}  </h4>
+                    
+                    {% endif %}
+                    
+                </center>
+            <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="text-black" for="fname">Email*</label>
+                  <input type="email"  name="email" id="email" class="form-control" placeholder="Email address" value="{{email}}" readonly>
+                </div>
+              </div>
+          <div class="row form-group">
+            <div class="col-md-12 mb-3 mb-md-0">
+              <label class="text-black" for="otp">Your OTP*</label>
+              <input type="text" name="otp" id="otp" class="form-control" placeholder="Enter Your OTP">
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary btn-block">Verify OTP</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

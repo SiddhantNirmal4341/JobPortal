@@ -1,0 +1,137 @@
+
+
+
+{% extends "base1.html" %}
+{% block content %}
+
+{% load static %}
+    <!-- HOME -->
+    <section class="section-hero overlay inner-page bg-image" style="background-image: url({% static 'images/hero_1.jpg'%});" id="home-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-white font-weight-bold">About Us</h1>
+            <div class="custom-breadcrumbs">
+              <a href="#">Home</a> <span class="mx-2 slash">/</span>
+              <span class="text-white"><strong>About Us</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-image overlay-primary fixed overlay" id="next" style="background-image: url({% static 'images/hero_1.jpg'%} );">
+      <div class="container">
+          <div class="row mb-5 justify-content-center">
+              <div class="col-md-7 text-center">
+                  <h2 class="section-title mb-2 text-white">JobBoard Site Stats</h2>
+                  <p class="lead text-white">The page showcases the number of registered candidates, the count of registered companies, and the current number of available job postings..</p>
+              </div>
+          </div>
+          <center>
+          <div class="row pb-0 block__19738 section-counter  align-items-center justify-content-center">
+              <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                  <div class="d-flex align-items-center justify-content-center mb-2">
+                      <strong class="number" id="user-count">0</strong>
+                  </div>
+                  <span class="caption">Candidates</span>
+              </div>
+          
+              <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                  <div class="d-flex align-items-center justify-content-center mb-2">
+                      <strong class="number" id="job-post">0</strong>
+                  </div>
+                  <span class="caption">Jobs Posted</span>
+              </div>
+              <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                  <div class="d-flex align-items-center justify-content-center mb-2">
+                      <strong class="number" id="company-count">0</strong>
+                  </div>
+                  <span class="caption">Companies</span>
+              </div>
+          </div>
+        </center>
+      </div>
+  </section>
+
+  <script>
+      // Fetch data from the server when the page loads
+      window.addEventListener('load', () => {
+          fetch('/countusercompany/')
+              .then(response => response.json())
+              .then(data => {
+                  // Update user count
+                  document.getElementById('user-count').textContent = data.user_count;
+
+                  // Update company count
+                  document.getElementById('company-count').textContent = data.company_count;
+                  document.getElementById('job-post').textContent = data.job_post;
+
+              })
+              .catch(error => console.error('Error fetching data:', error));
+      });
+  </script>
+
+
+    
+    <section class="site-section pb-0">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            
+              <img src="{% static 'images/sq_img_6.jpg' %}" alt="Image" class="img-fluid img-shadow">
+          </div>
+          <div class="col-lg-5 ml-auto">
+            <h2 class="section-title mb-3">JobBoard For Freelancers, Web Developers</h2>
+            
+            <p>In our job portal project, we've developed two key modules: the Candidate Module and the Company Module.
+
+              The Candidate Module is designed to cater to job seekers, providing them with a user-friendly interface to create profiles, upload resumes, and search for relevant job opportunities. Through this module, candidates can also receive notifications about new job openings that match their skills and preferences. Additionally, they can track their application statuses and communicate directly with potential employers.
+              
+              On the other hand, the Company Module is tailored to the needs of employers and recruiters. It allows companies to create profiles, post job listings, and manage the entire hiring process from candidate screening to final selection. Employers can search through candidate profiles, schedule interviews, and collaborate with their team members to make informed hiring decisions. The module also provides analytics and reporting features to track the effectiveness of recruitment efforts.
+              
+              By integrating these two modules seamlessly, our job portal ensures a smooth and efficient experience for both candidates and companies, facilitating meaningful connections and successful placements.
+              </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+   
+    <section class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center" data-aos="fade">
+            <h2 class="section-title mb-3">Our Team</h2>
+          </div>
+        </div>
+
+        <div class="row align-items-center block__69944">
+
+          <div class="col-md-6">
+            <img src="{%static 'images/a2.jpeg' %}" alt="Image" class="img-fluid mb-4 rounded" width="50%" height="30%">
+          </div>
+
+          <div class="col-md-6">
+            <h3>Sakshi & Sambhavi
+            </h3>
+            <p class="text-muted">Python Full Stack Developer</p>
+            <p>
+              As a Python developer, i have meticulously crafted every feature of the job portal project, from the sleek front-end interface to the robust back-end database management. Your attention to detail ensures seamless user experiences, effortless job searches, and efficient application processes. With each line of code, you're not just building a platform, but creating opportunities for countless individuals to connect with their dream careers.</p>
+            <div class="social mt-4">
+              <a href="https://www.facebook.com/"><span class="icon-facebook"></span></a> <!-- Facebook link -->
+              <a href="https://twitter.com/"><span class="icon-twitter"></span></a> <!-- Twitter link -->
+              <a href="https://www.instagram.com/"><span class="icon-instagram"></span></a> <!-- Instagram link -->
+              <a href="https://www.linkedin.com/"><span class="icon-linkedin"></span></a> <!-- LinkedIn link -->
+            </div>
+            
+          </div>
+
+          
+
+         
+      </div>
+    </section>
+
+    {% endblock%}

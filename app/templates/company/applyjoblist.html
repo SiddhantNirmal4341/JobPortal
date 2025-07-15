@@ -1,0 +1,101 @@
+{% extends "company/base1.html" %}
+
+{% block content %}
+{% load static %}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">  Candidate Applied Job List </h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Tables</li>
+            </ol>
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Candidate Applied Job List
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Job Name</th>
+                                <th>Candidate  Name</th>
+                                <th>Company Name</th>
+                                <th>Experience </th>
+                                <th>Education</th>
+
+                                <th>Location</th>
+                                <th> Minimum Salary</th>
+                                <th> Maximum Salary</th>
+                                <th>Contact</th>
+                                <th>portfolio Website</th>
+
+                                <th>Resume</th>
+                               
+
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Job Name</th>
+                                <th>Candidate  Name</th>
+                                <th>Company Name</th>
+                                <th>Experience </th>
+                                <th>Education</th>
+
+                                <th>Location</th>
+                                <th> Minimum Salary</th>
+                                <th> Maximum Salary</th>
+                                <th>Contact</th>
+                                <th>portfolio Website</th>
+                                <th>Resume</th>
+
+                            </tr>
+                        </tfoot>
+
+                        {% if alljob %}
+                        <tbody>
+                            {% for i in alljob %}   
+                            <tr>
+                                <td>{{i.job_id.jobname}}</td>
+                                <td>{{i.candidate_id.firstname}}</td>
+                                <td>{{i.job_id.companyname}}</td>
+                                <td>{{i.experience}}</td>
+                                <td>{{i.education}}</td>
+
+                                
+                                <td>{{i.job_id.location}}</td>
+                                <td>{{i.minimumsalary}}</td>
+                                <td>{{i.maximumsalary}}</td>
+                                <td>{{i.candidate_id.contact}}</td>
+
+                                
+                                <td>{{i.portfoliowebsite}}</td>
+
+                                <td><a href="{{ MEDIA_URL }}{{ i.resume.url }}" target="_blank">Download Resume</a></td>
+                               
+                                           
+                                    
+                            </tr>
+                            {%  endfor %}
+                            
+                          
+                        </tbody>
+                        {% endif %}
+                                   
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+  
+</div>
+      
+
+             
+ {% endblock%}
+
+ 

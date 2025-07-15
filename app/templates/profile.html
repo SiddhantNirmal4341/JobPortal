@@ -1,0 +1,190 @@
+{% extends "base1.html" %}
+{% block content %}
+
+{% load static %}
+
+<!-- HOME -->
+<section class="section-hero overlay inner-page bg-image" style="background-image: url({% static 'images/hero_1.jpg'%});" id="home-section">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="d-flex align-items-center"> <!-- Parent container -->
+                    {% if can.profile_pic %}
+                    <div class="form-group mr-5" style="margin-right:100%;"> <!-- Image container -->
+                        <img src="{{ can.profile_pic.url }}" alt="Profile Picture" style="max-width:150px; height:150px; border-radius: 50%; left-margin:20px">
+                    </div>
+                   
+                    {% endif %} 
+                    <div> <!-- Profile name container -->
+                                              <div class="custom-breadcrumbs">
+                            <a href="{% url 'indexpage' %}">Home</a> <span class="mx-2 slash">/</span>
+                            <a href="#">Job</a> <span class="mx-2 slash">/</span>
+                            <span class="text-white"><strong>Candidate Profile</strong></span>
+                            
+                        </div>
+                    </div>
+                   
+                </div>
+                 
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+<section class="site-section">
+    <div class="container">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <div class="d-flex align-items-center">
+                    <div>
+                        <h2>Update Your Profile</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="row">
+                    
+                    <div class="col-6">
+                        <a href="#" class="btn btn-block btn-primary btn-md">Save Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-12">
+
+                <form class="p-4 p-md-5 border rounded" action="{% url 'updateprofile' pk=request.session.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h3 class="text-black mb-5 border-bottom pb-2">Candidate Details</h3>
+
+                    <div class="form-group">
+                        <label for="company-website-tw d-block">Upload Profile Image</label> <br>
+                        <label class="btn btn-primary btn-md btn-file">
+                          Browse File<input type="file" hidden name="profile_pic" required>
+                        </label>
+                    </div>
+                  
+                  
+                
+                   
+
+                    <div class="form-group">
+                        <label for="firstname">Firstname</label>
+                        <input type="text" name="firstname" class="form-control" id="firstname"  value="{{can.firstname}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastname">Lastname</label>
+                        <input type="text" name="lastname" class="form-control" id="lastname"  value="{{can.lastname}}">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email">Email*</label>
+                      <input type="email" name="email" class="form-control" id="lastname"  value="{{user.email}}">
+                  </div>
+
+                    <div class="form-group">
+                        <label for="contact">Contact</label>
+                        <input type="text" name="contact" class="form-control" id="contact" value="{{can.contact}}">
+                    </div>
+                     
+
+                    <div class="form-group">
+                        {% if can.state %}
+                        <label for="contact">state</label>
+                       
+                        <input type="text" name="state" class="form-control" id="contact" value="{{can.state}}">
+                    </div>
+                    {% else %}
+                    <div class="form-group">
+                        <select class="selectpicker border rounded" name="state" id="job-state" data-style="btn-black" data-width="100%" data-live-search="true" title="Select State">
+                            <option>Any State</option>
+                            <option>Andhra Pradesh</option>
+                            <option>Arunachal Pradesh</option>
+                            <option>Assam</option>
+                            <option>Bihar</option>
+                            <option>Chhattisgarh</option>
+                            <option>Goa</option>
+                            <option>Gujarat</option>
+                            <option>Haryana</option>
+                            <option>Himachal Pradesh</option>
+                            <option>Jharkhand</option>
+                            <option>Karnataka</option>
+                            <option>Kerala</option>
+                            <option>Madhya Pradesh</option>
+                            <option>Maharashtra</option>
+                            <option>Manipur</option>
+                            <option>Meghalaya</option>
+                            <option>Mizoram</option>
+                            <option>Nagaland</option>
+                            <option>Odisha</option>
+                            <option>Punjab</option>
+                            <option>Rajasthan</option>
+                            <option>Sikkim</option>
+                            <option>Tamil Nadu</option>
+                            <option>Telangana</option>
+                            <option>Tripura</option>
+                            <option>Uttar Pradesh</option>
+                            <option>Uttarakhand</option>
+                            <option>West Bengal</option>
+                            <option>Andaman and Nicobar Islands</option>
+                            <option>Chandigarh</option>
+                            <option>Dadra and Nagar Haveli and Daman and Diu</option>
+                            <option>Delhi</option>
+                            <option>Lakshadweep</option>
+                            <option>Puducherry</option>
+                        </select>
+                    </div>
+                {% endif %}
+          
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" name="city" class="form-control" id="city" value="{{can.city}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" name="address" class="form-control" id="address" value="{{can.address}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" name="dob" class="form-control" id="dob" value="{{can.dob}}">
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        {% if can.state %}
+                        <label for="contact">Gender</label>
+                       
+                        <input type="text" name="gender" class="form-control" id="contact" value="{{can.gender}}">
+                    </div>
+                    {% else %}
+                    <div class="form-group">
+                        <label for="contact">Gender</label>
+                    <div class="form-group">
+                        <select class="selectpicker border rounded" name="gender" id="job-state" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Gender" value="{{cand.gender}}" required>
+                            <option>Male </option>
+                            <option>Female</option>
+                            <option>other</option>     
+                        </select>
+                    </div>  
+                </div>
+                {% endif %}
+
+
+
+
+
+
+                    <button type="submit" class="btn btn-primary">Save Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

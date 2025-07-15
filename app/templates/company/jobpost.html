@@ -1,0 +1,166 @@
+
+
+
+
+{% extends "company/base1.html" %}
+
+{% block content %}
+{% load static %}
+
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Job Post</h3></div>
+                                <div class="card-body">
+                                    <form action="{% url 'jobdetailsubmit' %}" method="post" enctype="multipart/form-data">
+                                        {% csrf_token%}
+                                        {% if msg %}
+                                        <h4 style="color:green">{{msg}} </h4>
+
+                                        {% endif%}
+                            
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="inputFirstName" name="jobname" type="text" placeholder="Enter your first name"  />
+                                                    <label for="inputFirstName">Job name </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input class="form-control" id="inputLastName" name="companyname" type="text" placeholder="Enter Compny name" value="{{request.session.company_name}}"/>
+                                                    <label for="inputLastName">Company name</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputEmail" name="email" type="email" placeholder="name@example.com"  value="{{request.session.email}}"/>
+                                            <label for="inputEmail">Email</label>
+                                        </div>
+
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputEmail" name="companyaddress" type="text" placeholder="name@example.com"  />
+                                            <label for="inputEmail">Company address</label>
+                                        </div>
+
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputEmail" name="jobdescription" type="text" placeholder="name@example.com"  />
+                                            <label for="inputEmail">Job description</label>
+                                        </div>
+
+
+                                       
+                                       
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="qualification" id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                                    <label for="inputFirstName">Qualification</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input class="form-control" name="responsibilities" id="inputLastName"  type="text" placeholder="Enter your last name"   />
+                                                    <label for="inputLastName">Responsibility</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+            
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control"  id="inputFirstName" name="location" type="text" placeholder="City"   />
+                                                    <label for="inputFirstName">Location</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input class="form-control" id="inputLastName" name="contact" type="contact" placeholder="Contact"  />
+                                                    <label for="inputLastName">Contact</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="published_date" type="date" placeholder="Address"  />
+                                                    <label for="inputAddress">Published date</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="application_deadline"  placeholder="experience" type="date"/>
+                                                    <label for="inputLogo">Application deadline </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="salarypackage" type="text" placeholder="Address"  />
+                                                    <label for="inputAddress">Salary/Package</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="experience"  placeholder="experience" type="number" min="0"/>
+                                                    <label for="inputLogo">Experience</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="vacancy" type="number" placeholder="Address"  />
+                                                    <label for="inputAddress">Vacancy</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="gender"  placeholder="experience" type="text"/>
+                                                    <label for="inputLogo">Gender</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="website" type="text" placeholder="Address" />
+                                                        <label for="inputAddress">Company Website</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="company_logo" type="file" />
+                                                        <label for="inputLogo">Company Logo (Image/File)</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+
+                                        </div>
+                                        <div class="mt-4 mb-0">
+                                            <div class="d-grid" > <button type="submit" class="btn btn-primary">Post Job</button></div>
+                                        </div>                                      
+                                    </div>
+                                    </form>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+{% endblock%}

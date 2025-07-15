@@ -1,0 +1,14 @@
+myvenv
+db.sqlite3
+/media/
+static/
+
+# VS Code
+.vscode/
+
+# Python
+*.pyc
+__pycache__/
+
+# VS Code
+.vscode/

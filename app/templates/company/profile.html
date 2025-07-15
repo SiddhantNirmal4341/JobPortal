@@ -1,0 +1,108 @@
+
+
+
+
+{% extends "company/base1.html" %}
+
+{% block content %}
+{% load static %}
+
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Company Profile</h3></div>
+                                <div class="card-body">
+                                    <form action="{% url 'updatecompany' pk=request.session.id %}" method="post" enctype="multipart/form-data">
+                                        {% csrf_token%}
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="inputFirstName" name="firstname" type="text" placeholder="Enter your first name" value="{{company.firstname}}" />
+                                                    <label for="inputFirstName">First name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input class="form-control" id="inputLastName" name="lastname" type="text" placeholder="Enter your last name"  value="{{company.lastname}}"/>
+                                                    <label for="inputLastName">Last name</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputEmail" name="email" type="email" placeholder="name@example.com"  value="{{user.email}}"/>
+                                            <label for="inputEmail">Email address</label>
+                                        </div>
+                                       
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="company_name" id="inputFirstName" type="text" placeholder="Enter your first name" value="{{company.company_name}}"/>
+                                                    <label for="inputFirstName">Company name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input class="form-control" name="state" id="inputLastName" name="state" type="text" placeholder="Enter your last name"  value="{{company.state}}" />
+                                                    <label for="inputLastName">State</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputEmail" name="website" type="text" placeholder="Company Website"  value="{{company.website}}" />
+                                            <label for="inputEmail">Company Website</label>
+                                        </div>
+
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="city" id="inputFirstName" name="city" type="text" placeholder="City"  value="{{company.city}}" />
+                                                    <label for="inputFirstName">City</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input class="form-control" id="inputLastName" name="contact" type="contact" placeholder="Contact" value="{{company.contact}}" />
+                                                    <label for="inputLastName">Contact</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="address" type="text" placeholder="Address" value="{{company.address}}" />
+                                                    <label for="inputAddress">Address</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="logo_pic" type="file" value="{{company.logo_pic}}"/>
+                                                    <label for="inputLogo">Logo (Image/File)</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputEmail" name="description" type="text" placeholder="Company Description"   value="{{company.description}}"/>
+                                            <label for="inputEmail">Company Description </label>
+                                        </div>
+                                              
+
+                                        </div>
+                                        <div class="mt-4 mb-0">
+                                            <div class="d-grid" > <button type="submit" class="btn btn-primary">Save Profile</button></div>
+                                        </div>                                      
+                                    </div>
+                                    </form>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+{% endblock%}

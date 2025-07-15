@@ -1,0 +1,95 @@
+{% extends "admins/base1.html" %}
+
+{% block content %}
+{% load static %}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">User List</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Tables</li>
+            </ol>
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                   Company List
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                            <th>Email </th>
+                                            <th>Role</th>
+                                            <th>Verified At </th>
+                                            <th>Created At </th>
+                                            <th>Updated At </th>
+                                            <th>Update </th>
+                                            <th> Delete </th>
+
+                                            
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Email </th>
+                                <th>Role</th>
+                                <th>Verified At </th>
+                                <th>Created At </th>
+                                <th>Updated At </th>
+                                <th>Update </th>
+                                <th> Delete </th>
+
+                               
+                            </tr>
+                        </tfoot>
+
+                        {% if allcompany %}
+                        <tbody>
+                            {% for i in allcompany %}   
+                            <tr>
+                                            <td>{{i.email}}</td>
+                                            <td>{{i.role}}</td>
+                                            <td>{{i.is_verify}}</td>
+                                            <td>{{i.is_created}}</td>
+                                            <td>{{i.is_updated}}</td>
+
+                                            <td> 
+                                                <form action="{% url 'companyverifypage' pk=i.id%}" method="post">
+                                                    {%csrf_token%}
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                            
+                                                </form>
+                                            </td>
+
+                                            <td> 
+                                                <form action="{% url 'companydelete' pk=i.id %}" method="post">
+                                                    {%csrf_token%}
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                            
+                                                </form>
+                                            </td>
+                                        
+                                            
+                                
+                            </tr>
+                            {%  endfor %}
+                          
+                        </tbody>
+                        {% endif %}
+                                   
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+  
+</div>
+      
+
+             
+ {% endblock%}
+
+ 
